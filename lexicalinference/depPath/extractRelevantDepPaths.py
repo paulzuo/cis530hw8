@@ -21,7 +21,6 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
     print(wikideppaths)
 
     lines_read = 0
-    # relevantDepPaths2counts = {}
     relevantDepPathsCounter = Counter()
     with open(wikideppaths, 'r') as f:
         for line in f:
@@ -45,7 +44,7 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
                 4. etc......
             '''
 
-           
+
             forward_exists = (word1, word2) in wordpairs_labels
             reverse_exists = (word2, word1) in wordpairs_labels
 
@@ -62,18 +61,11 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
 
             # TODO: how to handle autohyponyms
 
-    # TODO: this was the original code but I don't understand why they do this
-    # with open(outputfile, 'w') as f:
-    #     for dep_path in relevantDepPaths2counts:
-    #         if relevantDepPaths2counts[dep_path] > 0:
-    #             f.write(dep_path)
-    #             f.write('\n')
-
     with open(outputfile, 'w') as f:
-        for dep_path in relevantDepPathsCounter.keys():
-            f.write(dep_path)
-            f.write('\n')
-
+        for dep_path, count in relevantDepPathsCounter.items():
+            if count >= 100:
+                f.write(dep_path)
+                f.write('\n')
 
 def readVocab(vocabfile):
     vocab = set()
