@@ -1,6 +1,7 @@
 import os
 import pprint
 import argparse
+from collections import Counter
 
 pp = pprint.PrettyPrinter()
 parser = argparse.ArgumentParser()
@@ -20,7 +21,8 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
     print(wikideppaths)
 
     lines_read = 0
-    relevantDepPaths2counts = {}
+    # relevantDepPaths2counts = {}
+    relevantDepPathsCounter = Counter()
     with open(wikideppaths, 'r') as f:
         for line in f:
             line = line.strip()
@@ -43,11 +45,34 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
                 4. etc......
             '''
 
+           
+            forward_exists = (word1, word2) in wordpairs_labels
+            reverse_exists = (word2, word1) in wordpairs_labels
+
+            if forward_exists and wordpairs_labels[(word1, word2)]:
+                relevantDepPathsCounter[deppath + '\tForward'] += 1
+
+            if reverse_exists and wordpairs_labels[(word2, word1)]:
+                relevantDepPathsCounter[deppath + '\tReverse'] += 1
+
+            if forward_exists and reverse_exists \
+                and not wordpairs_labels[(word1, word2)] \
+                and not wordpairs_labels[(word2, word1)]:
+                relevantDepPathsCounter[deppath + '\tNegative'] += 1
+
+            # TODO: how to handle autohyponyms
+
+    # TODO: this was the original code but I don't understand why they do this
+    # with open(outputfile, 'w') as f:
+    #     for dep_path in relevantDepPaths2counts:
+    #         if relevantDepPaths2counts[dep_path] > 0:
+    #             f.write(dep_path)
+    #             f.write('\n')
+
     with open(outputfile, 'w') as f:
-        for dep_path in relevantDepPaths2counts:
-            if relevantDepPaths2counts[dep_path] > 0:
-                f.write(dep_path)
-                f.write('\n')
+        for dep_path in relevantDepPathsCounter.keys():
+            f.write(dep_path)
+            f.write('\n')
 
 
 def readVocab(vocabfile):
