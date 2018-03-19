@@ -17,9 +17,18 @@ class HearstPatterns(object):
         # so, what this means is that if you apply the first pattern,
         self.__hearst_patterns = [
                 ("(NP_\w+ (, )?such as (NP_\w+ ? (, )?(and |or )?)+)", "first"),
-                #("(such NP_\w+ as (NP_\w+ ? (, )?(and |or )?)+)","first"),
-                #("(NP_\w+ (, NP_\w+)?(, )? or other NP_\w+)","first")
-                #''' IMPLEMENT ADDITIONAL HEARST PATTERNS HERE '''
+                ("(such NP_\w+ as (NP_\w+ ? (, )?(and |or )?)+)","first"),
+                #("(NP_\w+ ? (, )?)+and other NP_\w+", "first"),
+                #("(NP_\w+ ? (, )?)+or other NP_\w+", "first"),
+                #("(NP_\w+ or other NP_\w+)","first"),
+                #("(NP_\w+ and other NP_\w+)","first")
+                #("NP_\w+ like NP_\w+", "first"), ## not good
+                ("NP_\w+ called NP_\w+", "first"),
+                #("NP_\w+ used as NP_\w+", "first"),
+                #("(NP_\w+ ?(,)? especially (NP_\w+ ? (, )?(and |or )?)+)","first"),
+                ("(NP_\w+ ?(,)? including (NP_\w+ ? (, )?(and |or )?)+)","first"),
+                #("NP_\w+ is a NP_\w+", "first"), #not good
+                ("NP_\w+ , a NP_\w+", "first"), # not good
             ]
 
         if extended:
