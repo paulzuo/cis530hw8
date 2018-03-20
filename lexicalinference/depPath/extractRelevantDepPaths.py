@@ -1,7 +1,7 @@
 import os
 import pprint
 import argparse
-from collections import Counter
+from collections import defaultdict
 
 pp = pprint.PrettyPrinter()
 parser = argparse.ArgumentParser()
@@ -21,7 +21,8 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
     print(wikideppaths)
 
     lines_read = 0
-    relevantDepPathsCounter = Counter()
+    relevantDepPaths2counts = defaultdict(
+        lambda: {'forward': 0, 'reverse': 0, 'both': 0, 'negative': 0, 'total': 0})
     with open(wikideppaths, 'r') as f:
         for line in f:
             line = line.strip()
@@ -48,24 +49,32 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
             forward_exists = (word1, word2) in wordpairs_labels
             reverse_exists = (word2, word1) in wordpairs_labels
 
-            if forward_exists and wordpairs_labels[(word1, word2)]:
-                relevantDepPathsCounter[deppath + '\tForward'] += 1
-
-            if reverse_exists and wordpairs_labels[(word2, word1)]:
-                relevantDepPathsCounter[deppath + '\tReverse'] += 1
-
             if forward_exists and reverse_exists \
+                and wordpairs_labels[(word1, word2)] \
+                and wordpairs_labels[(word2, word1)]:
+                relevantDepPaths2counts[deppath]['both'] += 1
+                relevantDepPaths2counts[deppath]['total'] += 1
+            elif forward_exists and reverse_exists \
                 and not wordpairs_labels[(word1, word2)] \
                 and not wordpairs_labels[(word2, word1)]:
-                relevantDepPathsCounter[deppath + '\tNegative'] += 1
+                relevantDepPaths2counts[deppath]['negative'] += 1
+                relevantDepPaths2counts[deppath]['total'] += 1
+            elif forward_exists and wordpairs_labels[(word1, word2)]:
+                relevantDepPaths2counts[deppath]['forward'] += 1
+                relevantDepPaths2counts[deppath]['total'] += 1
+            elif reverse_exists and wordpairs_labels[(word2, word1)]:
+                relevantDepPaths2counts[deppath]['reverse'] += 1
+                relevantDepPaths2counts[deppath]['total'] += 1
 
-            # TODO: how to handle autohyponyms
+    # pp.pprint(sorted(relevantDepPaths2counts.items(), key=lambda x: x[1]['total'], reverse=True)[:15])
 
     with open(outputfile, 'w') as f:
-        for dep_path, count in relevantDepPathsCounter.items():
-            if count >= 100:
-                f.write(dep_path)
-                f.write('\n')
+        for dep_path, counts in relevantDepPaths2counts.items():
+            if counts['total'] >= 5:
+            if counts['forward'] / counts['total'] >= .8:
+                f.write(dep_path + '\tForward\n')
+            elif counts['reverse'] / counts['total'] >= .8:
+                f.write(dep_path + '\tReverse\n')
 
 def readVocab(vocabfile):
     vocab = set()
