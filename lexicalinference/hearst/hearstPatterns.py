@@ -28,7 +28,7 @@ class HearstPatterns(object):
                 #("(NP_\w+ ?(,)? especially (NP_\w+ ? (, )?(and |or )?)+)","first"),
                 ("(NP_\w+ ?(,)? including (NP_\w+ ? (, )?(and |or )?)+)","first"),
                 #("NP_\w+ is a NP_\w+", "first"), #not good
-                ("NP_\w+ , a NP_\w+", "first"), # not good
+                #("NP_\w+ , a NP_\w+", "first"), # not good
             ]
 
         if extended:
