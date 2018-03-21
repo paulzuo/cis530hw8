@@ -70,11 +70,11 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
 
     with open(outputfile, 'w') as f:
         for dep_path, counts in relevantDepPaths2counts.items():
-            if counts['total'] >= 5:
-            if counts['forward'] / counts['total'] >= .8:
-                f.write(dep_path + '\tForward\n')
-            elif counts['reverse'] / counts['total'] >= .8:
-                f.write(dep_path + '\tReverse\n')
+            if counts['total'] > 5:
+                if counts['forward'] / counts['total'] >= .8:
+                    f.write(dep_path + '\tForward\n')
+                elif counts['reverse'] / counts['total'] >= .8:
+                    f.write(dep_path + '\tReverse\n')
 
 def readVocab(vocabfile):
     vocab = set()
