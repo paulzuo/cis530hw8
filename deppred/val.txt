@@ -21,7 +21,7 @@ pheasant	roundhouse	False
 guitar	shift	False
 train	archive	False
 washer	footnote	False
-dagger	artefact	True
+dagger	artefact	False
 beet	spinach	False
 ambulance	compartment	False
 celery	bean	False
@@ -40,7 +40,7 @@ blouse	arm	False
 stereo	illness	False
 oven	inside	True
 turnip	measure	False
-television	toaster	False
+television	toaster	True
 cloak	pattern	False
 shirt	l	False
 villa	accommodation	False
@@ -52,7 +52,7 @@ clarinet	reed	False
 cat	excitation	False
 salmon	catfish	False
 salmon	head	False
-gun	step	False
+gun	step	True
 bus	fender	False
 acacia	elm	False
 rifle	barrel	True
@@ -77,7 +77,7 @@ couch	teacher	False
 jacket	rephotography	False
 garlic	sword-grip	False
 pineapple	screw	False
-television	phone	False
+television	phone	True
 shirt	molecule	False
 snake	lizard	False
 frog	blood	True
@@ -103,7 +103,7 @@ washer	door	False
 cathedral	arch	True
 deer	foot	True
 hammer	iron	False
-car	petrol	False
+car	petrol	True
 cat	cricketer	False
 robin	post	False
 fork	turnkey	False
@@ -124,7 +124,7 @@ castle	villa	False
 wardrobe	thousand	False
 cathedral	adm	False
 dolphin	coleslaw	False
-snake	fang	False
+snake	fang	True
 villa	cathedral	False
 frigate	scale	False
 sieve	branch	False
@@ -140,7 +140,7 @@ guitar	pickup	True
 rifle	arm	True
 stereo	refrigerator	False
 turtle	th	False
-jacket	robe	False
+jacket	robe	True
 hornet	leg	False
 bus	rear	True
 sparrow	travelogue	False
@@ -149,7 +149,7 @@ donkey	cutting	False
 parsley	lettuce	False
 oven	ie	False
 train	reply	False
-pineapple	apple	False
+pineapple	apple	True
 frigate	mud	False
 cathedral	interior	True
 cloak	fleece	False
@@ -227,7 +227,7 @@ pig	mainland	False
 cat	chordate	False
 grenade	Workplace	False
 cloak	bedtime	False
-hotel	castle	False
+hotel	castle	True
 cloak	capacity	False
 robe	sleeve	True
 dishwasher	shop	False
@@ -237,7 +237,7 @@ pineapple	fruit	True
 dove	pigeon	False
 ambulance	medic	False
 lion	fool	False
-bag	bottle	False
+bag	bottle	True
 fork	glass	False
 donkey	groundsman	False
 guitar	voice	True
@@ -272,7 +272,7 @@ ferry	interior	False
 dolphin	nightie	False
 cranberry	lizard	False
 rabbit	dog	True
-phone	washer	False
+phone	washer	True
 axe	motivation	False
 plum	pineapple	False
 axe	screwdriver	False
@@ -282,7 +282,7 @@ blouse	garment	False
 bus	passenger	True
 castle	roof	True
 hammer	acclamation	False
-corn	bean	False
+corn	bean	True
 ambulance	artefact	False
 blouse	transcription	False
 hammer	chisel	False
@@ -327,14 +327,14 @@ villa	interior	True
 cat	tide	False
 flute	phone	False
 spinach	Sep	False
-shirt	vest	False
+shirt	vest	True
 jacket	microscope	False
 elm	pine	False
 birch	trunk	False
 pig	coverage	False
 frigate	tank	False
 lion	gorilla	False
-shirt	blouse	False
+shirt	blouse	True
 garlic	lettuce	False
 bear	multiple	False
 bottle	township	False
@@ -345,7 +345,7 @@ cod	vertebrate	False
 giraffe	gorilla	False
 deer	mutuality	False
 gorilla	headboard	False
-salmon	trout	False
+salmon	trout	True
 robin	vertebrate	False
 parsley	inequity	False
 wardrobe	artifact	False

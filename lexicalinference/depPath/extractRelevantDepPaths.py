@@ -66,20 +66,15 @@ def extractRelevantPaths(wikideppaths, wordpairs_labels, outputfile):
                 relevantDepPaths2counts[deppath]['reverse'] += 1
                 relevantDepPaths2counts[deppath]['total'] += 1
 
-    pp.pprint(sorted(relevantDepPaths2counts.items(), key=lambda x: x[1]['total'], reverse=True)[:15])
+    pp.pprint(sorted(relevantDepPaths2counts.items(), key=lambda x: x[1]['total'], reverse=True)[:50])
 
     with open(outputfile, 'w') as f:
-        # for dep_path, counts in relevantDepPaths2counts.items():
-        #     if counts['total'] > 5:
-        #         if counts['forward'] / counts['total'] >= .7:
-        #             f.write(dep_path + '\tForward\n')
-        #         elif counts['reverse'] / counts['total'] >= .8:
-        #             f.write(dep_path + '\tReverse\n')
-        for dep_path, counts in sorted(relevantDepPaths2counts.items(), key=lambda x: x[1]['total'], reverse=True)[:100]:
-            if counts['forward'] > counts['reverse']:
-                f.write(dep_path + '\tForward\n')
-            elif counts['reverse'] > counts['forward']:
-                f.write(dep_path + '\tReverse\n')
+        for dep_path, counts in relevantDepPaths2counts.items():
+            if counts['total'] > 5:
+                if counts['forward'] / counts['total'] >= .7:
+                    f.write(dep_path + '\tForward\n')
+                elif counts['reverse'] / counts['total'] >= .8:
+                    f.write(dep_path + '\tReverse\n')
 
 
 def readVocab(vocabfile):
