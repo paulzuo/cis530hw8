@@ -32,8 +32,8 @@ def extractHyperHypoExtractions(wikideppaths, relevantPaths):
 
             word1, word2, deppath = line.split("\t")
 
-            # if (deppath, 'Forward') in relevantPaths:
-            #     depPathExtractions.append((word1, word2))
+            if (deppath, 'Forward') in relevantPaths:
+                depPathExtractions.append((word1, word2))
 
             if (deppath, 'Reverse') in relevantPaths:
                 depPathExtractions.append((word2, word1))

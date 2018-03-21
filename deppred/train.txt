@@ -57,7 +57,7 @@ oven	tee	False
 jacket	gameplay	False
 vest	clothes	False
 giraffe	mustache	False
-apple	produce	False
+apple	produce	True
 carp	merchandising	False
 birch	elm	False
 moth	hornet	False
@@ -632,7 +632,7 @@ apple	dressage	False
 castle	inside	True
 moth	reredos	False
 sparrow	vertebrate	False
-cloak	clothes	False
+cloak	clothes	True
 pineapple	peel	False
 train	diesel	True
 trout	pollution	False
@@ -801,7 +801,7 @@ gun	bow	False
 oven	debut	False
 hammer	fare	False
 chisel	scissor	False
-shirt	clothes	False
+shirt	clothes	True
 train	carriage	True
 bottle	plastic	True
 missile	papacy	False
@@ -830,7 +830,7 @@ bear	bobby	False
 turtle	shell	True
 cat	fanatic	False
 lettuce	beet	False
-turtle	snake	False
+turtle	snake	True
 blouse	proprietor	False
 lion	cat	False
 fork	removal	False
@@ -844,7 +844,7 @@ dove	bounce	False
 shirt	contract	False
 hospital	table	True
 hospital	roof	True
-pheasant	game	False
+pheasant	game	True
 villa	bathroom	False
 acacia	birch	False
 grenade	expression	False
@@ -1323,7 +1323,7 @@ robe	ethno-politics	False
 cathedral	duration	False
 dishwasher	oven	False
 apricot	produce	True
-corn	house	False
+corn	house	True
 train	ambulance	False
 dresser	wardrobe	False
 dresser	plate	False
@@ -1712,7 +1712,7 @@ robe	shirt	False
 dresser	couch	False
 catfish	voter	False
 lettuce	impact	False
-gun	rifle	False
+gun	rifle	True
 frog	lung	True
 robin	thrush	True
 gun	charge	True
@@ -2046,7 +2046,7 @@ cucumber	bubble	False
 bomb	disease	False
 plum	fruit	True
 dove	chordate	False
-blouse	clothing	False
+blouse	clothing	True
 tuna	deadline	False
 rifle	charge	False
 bus	ferry	False
@@ -2560,7 +2560,7 @@ gorilla	vertebrate	False
 carp	dolphin	False
 tuna	head	False
 blouse	hem	False
-cranberry	berry	False
+cranberry	berry	True
 shirt	dermatitis	False
 blouse	structural-weak	False
 bottle	utensil	False
@@ -3135,7 +3135,7 @@ cranberry	quarantine	False
 train	market	False
 ambulance	tank	True
 bowl	inside	True
-owl	raptor	False
+owl	raptor	True
 clarinet	washington	False
 flute	trombone	False
 rifle	gun	True

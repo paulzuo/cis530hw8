@@ -21,7 +21,7 @@ pheasant	roundhouse	False
 guitar	shift	False
 train	archive	False
 washer	footnote	False
-dagger	artefact	False
+dagger	artefact	True
 beet	spinach	False
 ambulance	compartment	False
 celery	bean	False
