@@ -3,6 +3,11 @@ from collections import Counter
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import f1_score
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import LinearSVC
+from sklearn.ensemble import RandomForestClassifier, VotingClassifier
+from sklearn.linear_model import Perceptron
+from sklearn.naive_bayes import BernoulliNB, MultinomialNB
 
 # Read in the training and dev labels
 training_dict = {}
@@ -48,7 +53,13 @@ vectorizer = DictVectorizer()
 X_train = vectorizer.fit_transform(train_features)
 X_dev = vectorizer.transform(dev_features)
 
-clf = LogisticRegression()
+clf1 = LogisticRegression(penalty='l2') # 0.4
+#clf = LinearSVC() # 0.35294117647058826
+clf2 = Perceptron() # really good... 0.69
+clf3 = MultinomialNB() # pretty good... 0.5714285714285715
+
+clf = VotingClassifier(estimators=[('lr', clf1), ('rf', clf2), ('gnb', clf3)], voting='hard', weights=[2,4,3])
+
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_dev)
 
