@@ -33,6 +33,7 @@ with open('new_wikipedia_deppaths.txt', 'r') as f:
 # from paper, we only consider word pairs that had at least 5 distinct deppaths
 filtered_pairs2paths = {pair: paths for pair, paths in pairs2paths.items() 
                         if len(paths) >= 5}
+filtered_pairs2paths = dict(pairs2paths.items())
 
 # create dev and train features in the form of deppath -> count
 train_features = []
@@ -66,3 +67,23 @@ y_pred = clf.predict(X_dev)
 
 print('train score {}'.format(f1_score(y_true=y_train, y_pred=clf.predict(X_train))))
 print('val score {}'.format(f1_score(y_true=y_dev, y_pred=y_pred)))
+
+test_set = []
+with open('bless2011/data_lex_test.tsv', 'r') as f:
+    for line in f:
+        word1, word2 = line.strip().split('\t')
+        test_set.append((word1, word2))
+
+counts = defaultdict(int)
+
+with open('diy.txt', 'w') as f:
+    for x in test_set:
+        pred = False
+        if x in filtered_pairs2paths:
+            feature_vector = vectorizer.transform(dict(Counter(filtered_pairs2paths[x]).items()))
+            pred = clf.predict(feature_vector)[0]
+            counts[pred] += 1
+
+        f.write('{}\t{}\t{}\n'.format(x[0], x[1], pred))
+
+print(counts)
