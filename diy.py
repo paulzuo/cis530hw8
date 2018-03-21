@@ -2,7 +2,7 @@ from collections import defaultdict
 from collections import Counter
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, precision_score, recall_score
 
 # Read in the training and dev labels
 training_dict = {}
@@ -52,4 +52,5 @@ clf = LogisticRegression()
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_dev)
 
-print(f1_score(y_true=y_dev, y_pred=y_pred))
+print('train score {}'.format(f1_score(y_true=y_train, y_pred=clf.predict(X_train))))
+print('val score {}'.format(f1_score(y_true=y_dev, y_pred=y_pred)))
