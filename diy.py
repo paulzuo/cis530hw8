@@ -8,6 +8,7 @@ from sklearn.svm import LinearSVC
 from sklearn.ensemble import RandomForestClassifier, VotingClassifier
 from sklearn.linear_model import Perceptron
 from sklearn.naive_bayes import BernoulliNB, MultinomialNB
+from sklearn.metrics import f1_score, precision_score, recall_score
 
 # Read in the training and dev labels
 training_dict = {}
@@ -63,4 +64,5 @@ clf = VotingClassifier(estimators=[('lr', clf1), ('rf', clf2), ('gnb', clf3)], v
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_dev)
 
-print(f1_score(y_true=y_dev, y_pred=y_pred))
+print('train score {}'.format(f1_score(y_true=y_train, y_pred=clf.predict(X_train))))
+print('val score {}'.format(f1_score(y_true=y_dev, y_pred=y_pred)))
